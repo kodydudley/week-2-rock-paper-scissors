@@ -1,7 +1,20 @@
 let computerChoices = ['rock', 'paper', 'scissors']
+let playerPictures = {
+  rock: '<img src="rock.jpg" alt="" class = "img-fluid"/>',
+  paper: '<img src="paper.jpg" alt="" class = "img-fluid"/>',
+  scissors: '<img src="scissors.jpg" alt="" class = "img-fluid"/>',
+}
+
+let computerPictures = {
+  rock: '<img src="rock.jpg" alt="" class = "img-fluid"/>',
+  paper: '<img src="paper.jpg" alt="" class = "img-fluid"/>',
+  scissors: '<img src="scissors.jpg" alt="" class = "img-fluid"/>',
+}
 
 function play(playerChoice) {
   let computerChoice = computerChoices[Math.floor(Math.random() * computerChoices.length)]
+  drawComputerPic(computerChoice)
+  drawPlayerPic(playerChoice)
   if (playerChoice === 'paper' && computerChoice === 'rock' || playerChoice === 'scissors' && computerChoice === 'paper' || playerChoice === 'rock' && computerChoice === 'scissors') {
     drawWin()
   } else if (playerChoice === 'scissors' && computerChoice === 'rock' || playerChoice === 'rock' && computerChoice === 'paper' || playerChoice === 'paper' && computerChoice === 'scissors') {
@@ -27,4 +40,18 @@ function drawTie() {
   let tieMessage = '<h2 class="bg-warning">You Tie, Try Again!</h2>'
   let tieImgElem = document.getElementById("result")
   tieImgElem.innerHTML = `${tieMessage}`
+}
+
+
+
+function drawPlayerPic(input) {
+  let playerPic = playerPictures[input]
+  let playerPicElem = document.getElementById("playerPic")
+  playerPicElem.innerHTML = `${playerPic}`
+}
+
+function drawComputerPic(comp) {
+  let computerPic = computerPictures[comp]
+  let computerPicElem = document.getElementById("computerPic")
+  computerPicElem.innerHTML = `${computerPic}`
 }
